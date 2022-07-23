@@ -3,8 +3,15 @@
     border: 1px solid rgb(0, 223, 252);
     background-color: black;
     color: rgb(0, 223, 252);
-    padding: 0 1em 1.2em 1em;
+    padding: 0.5em;
     margin-bottom: 1em;
+
+    & > p {
+        text-align: left;
+        font-size: 1.2rem;
+        padding: 0.5em;
+        line-height: 1.4;
+    }
 
     &:hover {
         border-color: white;

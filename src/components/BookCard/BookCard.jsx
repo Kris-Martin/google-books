@@ -1,11 +1,15 @@
 import styles from "./BookCard.module.scss";
 
-const BookCard = ({ book }) => {
+const BookCard = ({ title, authors, description }) => {
     return (
         <div className={styles.BookCard}>
-            <h2 id="title">{book.title}</h2>
-            <p id="author">Author: {book.author}</p>
-            <p id="description">Description: {book.description}</p>
+            <h2 id="title">{title}</h2>
+            <p id="author">
+                <strong>Author:</strong> {authors}
+            </p>
+            <p id="description">
+                <strong>Description:</strong> {description}
+            </p>
         </div>
     );
 };
