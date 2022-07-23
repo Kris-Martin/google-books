@@ -1,27 +1,27 @@
 export const bookData = [
     {
         title: "Lord Of The Rings",
-        author: "JRR Tolkien",
+        authors: "JRR Tolkien",
         description: "A hobbit and his friends have to dispose of a ring.",
     },
     {
         title: "The Hobbit",
-        author: "JRR Tolkien",
+        authors: "JRR Tolkien",
         description: "A hobbit finds a ring.",
     },
     {
         title: "Pride and Prejudice",
-        author: "Jane Austen",
+        authors: "Jane Austen",
         description: "A woman and a man have an awkward meet cute.",
     },
     {
         title: "Watership Down",
-        author: "Richard Adams",
+        authors: "Richard Adams",
         description: "A group of rabbits must find a new home.",
     },
     {
         title: "1984",
-        author: "George Orwell",
+        authors: "George Orwell",
         description: "Winston is having a very bad time.",
     },
 ];
