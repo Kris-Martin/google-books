@@ -6,32 +6,45 @@ import { useEffect, useState } from "react";
 
 const BooksContainer = () => {
     const [books, setBooks] = useState(bookData);
-    const [searchStr, setSearchStr] = useState("");
 
-    useEffect(() => {
-        console.log("Now set to: ", searchStr);
-        return () => {
-            console.log("From: ", searchStr);
-        };
-    }, [searchStr]);
+    // useEffect(() => {
+    //     console.log("Now set to:", books);
+    //     return () => {
+    //         console.log("From: ", books);
+    //     };
+    // }, [books]);
 
     const clearAllResults = () => {
         setBooks([]);
     };
 
-    const searchBooks = (e) => {
+    const searchBooks = async (e) => {
         e.preventDefault();
         let input = document.getElementById("searchStr").value;
-        console.log("Input: ", input);
-        setSearchStr(input);
+        // console.log("Input: ", input);
+        await fetchBooks(input, setBooks);
         document.getElementById("searchForm").reset();
     };
 
-    const sortBooks = (books) => {
-        let sorted = books.sort((a, b) => a.title.localeCompare(b.title));
-        console.log(sorted);
-        return sorted;
-    };
+    async function fetchBooks(input, setBooks) {
+        const response = await fetch(
+            `https://www.googleapis.com/books/v1/volumes?q=${input}=search+terms`,
+        );
+        const data = await response.json();
+        const { items } = await data;
+        const books = items.map(async ({ volumeInfo }) => {
+            const { title, authors, description } = await volumeInfo;
+            console.log(volumeInfo);
+            return { title, authors, description };
+        });
+        let updated = Promise.all(books);
+        setBooks(await updated);
+    }
+
+    // const sortBooks = (books) => {
+    //     let sorted = books.sort((a, b) => a.title.localeCompare(b.title));
+    //     return sorted;
+    // };
 
     return (
         <>
@@ -41,8 +54,20 @@ const BooksContainer = () => {
             </div>
             <SearchForm searchBooks={searchBooks} />
             <div className={styles.BooksContainer}>
-                {sortBooks(books).map((book, i) => {
-                    return <BookCard book={book} key={i} books={books} />;
+                {books.map((book, i) => {
+                    const { title, authors, description } = book;
+                    return (
+                        <BookCard
+                            title={title}
+                            authors={
+                                authors.length > 1
+                                    ? authors.join(", ")
+                                    : authors
+                            }
+                            description={description}
+                            key={i}
+                        />
+                    );
                 })}
             </div>
         </>

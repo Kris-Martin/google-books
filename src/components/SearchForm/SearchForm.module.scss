@@ -6,6 +6,11 @@
 
     & > input {
         width: 100%;
+        background-image: url("./Google_Books_logo_2015.svg");
+        background-repeat: no-repeat;
+        background-size: 4em;
+        background-position: 99%;
+        background-clip: padding-box;
     }
 
     & > input,
