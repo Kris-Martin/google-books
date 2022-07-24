@@ -9,3 +9,14 @@
     flex-direction: column;
     justify-content: space-evenly;
 }
+
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+svg {
+    fill: rgb(0, 223, 252);
+    margin-left: 1em;
+}
