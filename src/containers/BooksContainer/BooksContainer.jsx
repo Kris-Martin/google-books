@@ -26,26 +26,6 @@ const BooksContainer = () => {
         document.getElementById("searchForm").reset();
     };
 
-    async function fetchBooks(input, setBooks) {
-        const response = await fetch(
-            `https://www.googleapis.com/books/v1/volumes?q=${input}=search+terms`,
-        );
-        const data = await response.json();
-        const { items } = await data;
-        const books = items.map(async ({ volumeInfo }) => {
-            const { title, authors, description } = await volumeInfo;
-            console.log(volumeInfo);
-            return { title, authors, description };
-        });
-        let updated = Promise.all(books);
-        setBooks(await updated);
-    }
-
-    // const sortBooks = (books) => {
-    //     let sorted = books.sort((a, b) => a.title.localeCompare(b.title));
-    //     return sorted;
-    // };
-
     return (
         <>
             <div className={styles.bookCount}>
@@ -55,16 +35,13 @@ const BooksContainer = () => {
             <SearchForm searchBooks={searchBooks} />
             <div className={styles.BooksContainer}>
                 {books.map((book, i) => {
-                    const { title, authors, description } = book;
+                    const { title, authors, description, thumbnail } = book;
                     return (
                         <BookCard
                             title={title}
-                            authors={
-                                authors.length > 1
-                                    ? authors.join(", ")
-                                    : authors
-                            }
+                            authors={authors}
                             description={description}
+                            thumbnail={thumbnail}
                             key={i}
                         />
                     );
@@ -73,5 +50,21 @@ const BooksContainer = () => {
         </>
     );
 };
+
+async function fetchBooks(input, setBooks) {
+    const response = await fetch(
+        `https://www.googleapis.com/books/v1/volumes?q=${input}&orderBy=relevance`,
+    );
+    const data = await response.json();
+    const { items } = await data;
+    const books = items.map(async ({ volumeInfo }) => {
+        const { title, authors, description, imageLinks } = await volumeInfo;
+        const thumbnail = imageLinks === undefined ? "" : imageLinks.thumbnail;
+        // console.log(imageLinks === undefined ? "Missing" : "Good");
+        return { title, authors, description, thumbnail };
+    });
+    let updated = Promise.all(books);
+    setBooks(await updated);
+}
 
 export default BooksContainer;
