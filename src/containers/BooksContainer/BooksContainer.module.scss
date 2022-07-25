@@ -28,14 +28,21 @@
 }
 
 .BooksContainer {
+    // Sizing
     width: 80%;
     height: 78vh;
     margin: 0 auto;
     margin-bottom: 1em;
+    // Styling
     border: 5px solid rgb(0, 223, 252);
     background-color: black;
     color: rgb(0, 223, 252);
     font-size: 1rem;
     padding: 1em;
     overflow: scroll;
+    // Content
+    display: grid;
+    gap: 1em;
+
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }

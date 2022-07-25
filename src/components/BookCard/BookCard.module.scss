@@ -1,10 +1,21 @@
 .BookCard {
+    // Sizing
+    width: 100%;
     margin: 0 auto;
+    // margin-bottom: 1em;
+    padding: 0.5em;
+    // Styling
     border: 1px solid white;
     color: white;
     background-color: rgb(0, 223, 252, 0.5);
-    padding: 0.5em;
-    margin-bottom: 1em;
+    //Content
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    & > h2 {
+        margin-top: 0.5em;
+    }
 
     & > p {
         text-align: left;
@@ -14,9 +25,10 @@
     }
 
     & > img {
+        height: 40%;
+        object-fit: contain;
+        padding: 1em;
         border: 2px solid white;
-        min-width: 200px;
-        min-height: 260px;
         background-color: rgb(50, 42, 42, 0.5);
     }
 }

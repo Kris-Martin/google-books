@@ -21,9 +21,17 @@ const BookCard = ({ title, authors, description, thumbnail }) => {
                     : ""}
             </p>
             <p id="description">
-                <strong>Description:</strong> {description}
+                <strong>Description:</strong> {handleDescription(description)}
             </p>
         </div>
     );
 };
+
+function handleDescription(description) {
+    const text = description.split(" ");
+    return text.length > 50
+        ? text.slice(0, 50).join(" ") + "..."
+        : text.join(" ");
+}
+
 export default BookCard;
