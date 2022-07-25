@@ -12,23 +12,20 @@ const BookCard = ({ title, authors, description, thumbnail }) => {
                         : "No image provided"
                 }
             />
-            <div className={styles.BookCard__Details}>
-                <h2 id="title" className={styles.BookCard__Title}>
-                    {title}
-                </h2>
-                <p id="author" className={styles.BookCard__Para}>
-                    <strong>Author:</strong>{" "}
-                    {authors !== undefined
-                        ? authors.length > 1
-                            ? authors.join(", ")
-                            : authors
-                        : ""}
-                </p>
-                <p id="description" className={styles.BookCard__Para}>
-                    <strong>Description:</strong>{" "}
-                    {handleDescription(description)}
-                </p>
-            </div>
+            <h2 id="title" className={styles.BookCard__Title}>
+                {title}
+            </h2>
+            <p id="author" className={styles.BookCard__Para}>
+                <strong>Author:</strong>{" "}
+                {authors !== undefined
+                    ? authors.length > 1
+                        ? authors.join(", ")
+                        : authors
+                    : ""}
+            </p>
+            <p id="description" className={styles.BookCard__Para}>
+                <strong>Description:</strong> {handleDescription(description)}
+            </p>
         </div>
     );
 };
