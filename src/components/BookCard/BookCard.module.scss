@@ -1,11 +1,13 @@
+@import "../../shared/palette";
+
 .BookCard {
     // Sizing
     width: 100%;
     padding: 0.5em;
     // Styling
-    border: 1px solid white;
-    color: white;
-    background-color: rgb(0, 223, 252, 0.5);
+    border: 1px solid $secondaryAccent;
+    color: $secondaryAccent;
+    background-color: $secondaryBackground;
     // Content
     display: flex;
     flex-direction: column;
@@ -26,7 +28,7 @@
         height: 40%;
         object-fit: contain;
         padding: 1em;
-        border: 2px solid white;
-        background-color: rgb(50, 42, 42, 0.5);
+        border: 2px solid $secondaryAccent;
+        background-color: $tertiaryBackground;
     }
 }

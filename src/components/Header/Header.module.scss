@@ -1,3 +1,5 @@
+@import "../../shared/palette";
+
 .Header {
     width: 100%;
     display: flex;
@@ -5,8 +7,8 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    background-color: black;
-    color: rgb(0, 223, 252);
+    background-color: $primaryBackground;
+    color: $accent;
     font-size: 1.5rem;
 
     &__Title {
@@ -16,7 +18,7 @@
         align-items: center;
     }
     &__Logo {
-        fill: rgb(0, 223, 252);
+        fill: $accent;
         margin-left: 1em;
     }
 
@@ -37,23 +39,23 @@
     font-size: 1rem;
     display: flex;
     justify-content: space-between;
-    color: rgb(0, 223, 252);
+    color: $accent;
 
     &__Clear_Button {
         border: none;
         font-size: 1rem;
-        background-color: black;
-        color: rgb(0, 223, 252);
+        background-color: $primaryBackground;
+        color: $accent;
         cursor: pointer;
 
         &:hover {
-            background-color: rgb(0, 223, 252, 0.5);
-            color: white;
+            background-color: $secondaryBackground;
+            color: $secondaryAccent;
             text-decoration: underline;
         }
 
         &:active {
-            background-color: rgb(255, 0, 0, 0.5);
+            background-color: $warningAccent;
             font-weight: bold;
         }
     }
