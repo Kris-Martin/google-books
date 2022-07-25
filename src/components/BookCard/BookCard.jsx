@@ -28,6 +28,7 @@ const BookCard = ({ title, authors, description, thumbnail }) => {
 };
 
 function handleDescription(description) {
+    if (description === undefined) return description;
     const text = description.split(" ");
     return text.length > 50
         ? text.slice(0, 50).join(" ") + "..."
