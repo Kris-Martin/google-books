@@ -1,11 +1,10 @@
 import styles from "./BooksContainer.module.scss";
 import BookCard from "../../components/BookCard";
-import { bookData } from "./bookData.js";
 import { useState } from "react";
 import Header from "../../components/Header/Header.jsx";
 
 const BooksContainer = () => {
-    const [books, setBooks] = useState(bookData);
+    const [books, setBooks] = useState([]);
 
     const clearAllResults = () => {
         setBooks([]);
@@ -13,7 +12,8 @@ const BooksContainer = () => {
 
     const searchBooks = async (e) => {
         e.preventDefault();
-        let input = document.getElementById("searchStr").value;
+        const input = document.getElementById("searchStr").value;
+        if (input === "") return alert("Please enter something to search..");
         await fetchBooks(input, setBooks);
         document.getElementById("searchForm").reset();
     };
@@ -54,7 +54,7 @@ async function fetchBooks(input, setBooks) {
         const thumbnail = imageLinks === undefined ? "" : imageLinks.thumbnail;
         return { title, authors, description, thumbnail };
     });
-    let updated = Promise.all(books);
+    const updated = Promise.all(books);
     setBooks(await updated);
 }
 
