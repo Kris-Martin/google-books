@@ -3,6 +3,7 @@ import BookCard from "../../components/BookCard";
 import SearchForm from "../../components/SearchForm";
 import { bookData } from "./bookData.js";
 import { useEffect, useState } from "react";
+import Header from "../../components/Header/Header.jsx";
 
 const BooksContainer = () => {
     const [books, setBooks] = useState(bookData);
@@ -28,16 +29,11 @@ const BooksContainer = () => {
 
     return (
         <>
-            <div className={styles.BookCount}>
-                <p>Your search found {books.length} books...</p>
-                <button
-                    className={styles.BookCount__Clear_Button}
-                    onClick={clearAllResults}
-                >
-                    clear all results
-                </button>
-            </div>
-            <SearchForm searchBooks={searchBooks} />
+            <Header
+                onClick={clearAllResults}
+                searchBooks={searchBooks}
+                books={books}
+            />
             <div className={styles.BooksContainer}>
                 {books.map((book, i) => {
                     const { title, authors, description, thumbnail } = book;
