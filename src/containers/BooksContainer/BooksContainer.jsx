@@ -1,19 +1,11 @@
 import styles from "./BooksContainer.module.scss";
 import BookCard from "../../components/BookCard";
-import SearchForm from "../../components/SearchForm";
 import { bookData } from "./bookData.js";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Header from "../../components/Header/Header.jsx";
 
 const BooksContainer = () => {
     const [books, setBooks] = useState(bookData);
-
-    // useEffect(() => {
-    //     console.log("Now set to:", books);
-    //     return () => {
-    //         console.log("From: ", books);
-    //     };
-    // }, [books]);
 
     const clearAllResults = () => {
         setBooks([]);
@@ -22,7 +14,6 @@ const BooksContainer = () => {
     const searchBooks = async (e) => {
         e.preventDefault();
         let input = document.getElementById("searchStr").value;
-        // console.log("Input: ", input);
         await fetchBooks(input, setBooks);
         document.getElementById("searchForm").reset();
     };
@@ -61,7 +52,6 @@ async function fetchBooks(input, setBooks) {
     const books = items.map(async ({ volumeInfo }) => {
         const { title, authors, description, imageLinks } = await volumeInfo;
         const thumbnail = imageLinks === undefined ? "" : imageLinks.thumbnail;
-        // console.log(imageLinks === undefined ? "Missing" : "Good");
         return { title, authors, description, thumbnail };
     });
     let updated = Promise.all(books);
