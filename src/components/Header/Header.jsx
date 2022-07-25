@@ -17,7 +17,7 @@ const Header = ({ onClick, searchBooks, books }) => {
                 </svg>
             </div>
             <div className={styles.BookCount}>
-                <p>{books.length} books found...</p>
+                <p>{books.length > 0 && `${books.length} books found...`}</p>
                 <button
                     className={styles.BookCount__Clear_Button}
                     onClick={onClick}
