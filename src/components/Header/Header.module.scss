@@ -1,0 +1,14 @@
+.Header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: black;
+    color: rgb(0, 223, 252);
+    font-size: 1.5rem;
+
+    &__Logo {
+        fill: rgb(0, 223, 252);
+        margin-left: 1em;
+    }
+}
