@@ -28,9 +28,14 @@ const BooksContainer = () => {
 
     return (
         <>
-            <div className={styles.bookCount}>
+            <div className={styles.BookCount}>
                 <p>Your search found {books.length} books...</p>
-                <button onClick={clearAllResults}>clear all results</button>
+                <button
+                    className={styles.BookCount__Clear_Button}
+                    onClick={clearAllResults}
+                >
+                    clear all results
+                </button>
             </div>
             <SearchForm searchBooks={searchBooks} />
             <div className={styles.BooksContainer}>

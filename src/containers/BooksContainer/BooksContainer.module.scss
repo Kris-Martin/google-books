@@ -1,13 +1,13 @@
-.bookCount {
+.BookCount {
     margin: 0 auto;
-    width: 80%;
+    width: 95%;
     text-align: left;
     font-size: 1.2rem;
     display: flex;
     justify-content: space-between;
     color: rgb(0, 223, 252);
 
-    & > button {
+    &__Clear_Button {
         border: none;
         font-size: 1.2rem;
         background-color: black;
@@ -29,7 +29,7 @@
 
 .BooksContainer {
     // Sizing
-    width: 80%;
+    width: 95%;
     height: 78vh;
     margin: 0 auto;
     margin-bottom: 1em;
