@@ -45,7 +45,7 @@ const BooksContainer = () => {
 
 async function fetchBooks(input, setBooks) {
     const response = await fetch(
-        `https://www.googleapis.com/books/v1/volumes?q=${input}&orderBy=relevance&maxResults=12`,
+        `https://www.googleapis.com/books/v1/volumes?q=${input}&orderBy=relevance&maxResults=20`,
     );
     const data = await response.json();
     if (data.totalItems === 0)
