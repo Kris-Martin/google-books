@@ -13,7 +13,7 @@ const BookCard = ({ title, authors, description, thumbnail }) => {
                 }
             />
             <h2 id="title" className={styles.BookCard__Title}>
-                {title}
+                {title !== undefined ? title : "No title listed."}
             </h2>
             <p id="author" className={styles.BookCard__Para}>
                 <strong>Author:</strong>{" "}
