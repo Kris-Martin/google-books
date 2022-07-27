@@ -1,5 +1,7 @@
 import styles from "./BookCard.module.scss";
 import googleImg from "../../shared/Google_Books_logo_2015.svg";
+// noCoverImg By Rugby471 (talk · contribs) - Own work, CC BY-SA 4.0, https://commons.wikimedia.org/w/index.php?curid=3162595
+import noCoverImg from "./book_placeholder.png";
 
 const BookCard = ({
     title,
@@ -12,7 +14,7 @@ const BookCard = ({
         <div className={styles.BookCard}>
             <img
                 className={styles.BookCard__Img}
-                src={thumbnail}
+                src={thumbnail ? thumbnail : noCoverImg}
                 alt={
                     title && thumbnail !== ""
                         ? `${title} bookcover`
@@ -36,7 +38,11 @@ const BookCard = ({
                 target="_blank"
                 rel="noopener noreferrer"
             >
-                <img src={googleImg} alt="Link to Google Books" />
+                <img
+                    className={styles.BookCard__Link__Img}
+                    src={googleImg}
+                    alt="Link to Google Books"
+                />
             </a>
             <p id="description" className={styles.BookCard__Para}>
                 <strong>Description:</strong> {handleDescription(description)}
