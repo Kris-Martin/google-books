@@ -48,6 +48,10 @@ async function fetchBooks(input, setBooks) {
         `https://www.googleapis.com/books/v1/volumes?q=${input}&orderBy=relevance&maxResults=12`,
     );
     const data = await response.json();
+    if (data.totalItems === 0)
+        return alert(
+            "Sorry, no results found. Please try using different search terms.",
+        );
     const { items } = await data;
     const books = items.map(async ({ volumeInfo }) => {
         const { title, authors, description, imageLinks } = await volumeInfo;
