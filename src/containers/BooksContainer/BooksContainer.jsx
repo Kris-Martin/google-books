@@ -27,11 +27,18 @@ const BooksContainer = () => {
             />
             <div className={styles.BooksContainer}>
                 {books.map((book, i) => {
-                    const { title, authors, description, thumbnail } = book;
+                    const {
+                        title,
+                        authors,
+                        canonicalVolumeLink,
+                        description,
+                        thumbnail,
+                    } = book;
                     return (
                         <BookCard
                             title={title}
                             authors={authors}
+                            canonicalVolumeLink={canonicalVolumeLink}
                             description={description}
                             thumbnail={thumbnail}
                             key={i}
@@ -54,9 +61,10 @@ async function fetchBooks(input, setBooks) {
         );
     const { items } = await data;
     const books = items.map(async ({ volumeInfo }) => {
-        const { title, authors, description, imageLinks } = await volumeInfo;
+        const { title, authors, canonicalVolumeLink, description, imageLinks } =
+            await volumeInfo;
         const thumbnail = imageLinks === undefined ? "" : imageLinks.thumbnail;
-        return { title, authors, description, thumbnail };
+        return { title, authors, canonicalVolumeLink, description, thumbnail };
     });
     const updated = Promise.all(books);
     setBooks(await updated);

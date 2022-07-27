@@ -1,6 +1,13 @@
 import styles from "./BookCard.module.scss";
+import googleImg from "../../shared/Google_Books_logo_2015.svg";
 
-const BookCard = ({ title, authors, description, thumbnail }) => {
+const BookCard = ({
+    title,
+    authors,
+    canonicalVolumeLink,
+    description,
+    thumbnail,
+}) => {
     return (
         <div className={styles.BookCard}>
             <img
@@ -23,6 +30,14 @@ const BookCard = ({ title, authors, description, thumbnail }) => {
                         : authors
                     : "No author listed."}
             </p>
+            <a
+                className={styles.BookCard__Link}
+                href={canonicalVolumeLink}
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                <img src={googleImg} alt="Link to Google Books" />
+            </a>
             <p id="description" className={styles.BookCard__Para}>
                 <strong>Description:</strong> {handleDescription(description)}
             </p>
