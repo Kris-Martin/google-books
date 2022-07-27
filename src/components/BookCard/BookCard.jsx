@@ -21,7 +21,7 @@ const BookCard = ({ title, authors, description, thumbnail }) => {
                     ? authors.length > 1
                         ? authors.join(", ")
                         : authors
-                    : ""}
+                    : "No author listed."}
             </p>
             <p id="description" className={styles.BookCard__Para}>
                 <strong>Description:</strong> {handleDescription(description)}
@@ -31,7 +31,8 @@ const BookCard = ({ title, authors, description, thumbnail }) => {
 };
 
 function handleDescription(description) {
-    if (description === undefined) return description;
+    if (description === undefined || description === "")
+        return "No description listed.";
     const text = description.split(" ");
     return text.length > 50
         ? text.slice(0, 50).join(" ") + "..."
